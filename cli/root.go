@@ -1,7 +1,6 @@
 package cli
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"sync"
@@ -89,24 +88,26 @@ func RootAction(c *cli.Context) error {
 		defer wg.Done()
 
 		var (
-			s   = bufio.NewScanner(os.Stdin)
+			n   int
 			m   message.Message
 			err error
 		)
 
-		for s.Scan() {
-			m = message.Message(s.Text())
+		for {
+			n, err = os.Stdin.Read(m)
+			if err != nil {
+				panic(err)
+			}
+
+			if n == 0 {
+				continue
+			}
 
 			log.Debugf("Producing: %s", m)
 			err = pr.Produce(m)
 			if err != nil {
 				panic(err)
 			}
-		}
-
-		err = s.Err()
-		if err != nil {
-			panic(err)
 		}
 	}()
 	wg.Add(1)
