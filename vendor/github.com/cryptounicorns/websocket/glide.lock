@@ -1,0 +1,26 @@
+hash: c596dd144fa3ec23548ec40722772119949da2bc713b0b4fc415be0c467217bb
+updated: 2018-03-22T23:53:02.079816342Z
+imports:
+- name: github.com/corpix/loggers
+  version: 6428ebad5a5ef7a300d5dc269a99978de598aace
+  subpackages:
+  - logger/logrus
+  - logger/prefixwrapper
+- name: github.com/gorilla/context
+  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
+- name: github.com/gorilla/mux
+  version: 4dbd923b0c9e99ff63ad54b0e9705ff92d3cdb06
+- name: github.com/gorilla/websocket
+  version: eb925808374e5ca90c83401a40d711dc08c0c0f6
+- name: github.com/sirupsen/logrus
+  version: 90150a8ed11b6ce285e77e8af2b0109559ce4777
+- name: golang.org/x/crypto
+  version: 88942b9c40a4c9d203b82b3731787b672d6e809b
+  subpackages:
+  - ssh/terminal
+- name: golang.org/x/sys
+  version: 91ee8cde435411ca3f1cd365e8f20131aed4d0a1
+  subpackages:
+  - unix
+  - windows
+testImports: []

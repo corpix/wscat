@@ -1,29 +1,17 @@
 hash: 6eb6c35fdf5746c9d0803549ee8e57ee5542830267d4e5eb964d5ec39875586f
-updated: 2018-03-12T00:34:58.240151951Z
+updated: 2018-03-23T22:18:59.089734336Z
 imports:
 - name: github.com/bitly/go-nsq
   version: 8c1ff52dff6fd3ecc19c418649bc643b18e862fc
-- name: github.com/corpix/effects
-  version: 0d818ebf2da05939c8247de5b84f44a2428c032e
-  subpackages:
-  - closer
 - name: github.com/corpix/formats
-  version: 44ae7d799273aeda646d30844a33cb803990ef3d
+  version: ca6b86539565956b3b8019f8a5ad9e04db4ec946
 - name: github.com/corpix/loggers
   version: 6428ebad5a5ef7a300d5dc269a99978de598aace
   subpackages:
   - logger/logrus
   - logger/prefixwrapper
-- name: github.com/corpix/stores
-  version: 6e928963c62c49aad5f322e0af61550d7da921ea
-  subpackages:
-  - errors
-  - store/memory
-  - store/memoryttl
-- name: github.com/corpix/time
-  version: 9adb218ff5319d3f3e3d5a44fe0cb5d4880762f4
 - name: github.com/cryptounicorns/queues
-  version: 31c6ae4144d5a77d24f5122ea205f23f7abccbcf
+  version: 47d8c29d09bfc2722a981df227bf9cc6669050f3
   subpackages:
   - consumer
   - errors
@@ -35,6 +23,8 @@ imports:
   - queue/readwriter
   - queue/websocket
   - result
+- name: github.com/cryptounicorns/websocket
+  version: 47bdc635453541b7b5f44e17e16a61e97f885e88
 - name: github.com/davecgh/go-spew
   version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
   subpackages:
@@ -47,19 +37,10 @@ imports:
   version: bb955e01b9346ac19dc29eb16586c90ded99a98c
 - name: github.com/eapache/queue
   version: 093482f3f8ce946c05bcba64badd2c82369e084d
-- name: github.com/gobwas/httphead
-  version: 2c6c146eadee0b69f856f87e3e9f1d0cd6aad2f5
-- name: github.com/gobwas/pool
-  version: e294a5482d9a8523f8e6b2744ea2185083c838af
-  subpackages:
-  - pbufio
-  - pbytes
-- name: github.com/gobwas/ws
-  version: c8595a6266aa8b97b14e7406cf059cd240b34100
-  subpackages:
-  - wsutil
 - name: github.com/golang/snappy
   version: 553a641470496b2327abcac10b36396bd98e45c9
+- name: github.com/gorilla/websocket
+  version: eb925808374e5ca90c83401a40d711dc08c0c0f6
 - name: github.com/naoina/go-stringutil
   version: 6b638e95a32d0c1131db0e7fe83775cbea4a0d0b
 - name: github.com/naoina/toml
@@ -75,17 +56,17 @@ imports:
 - name: github.com/rcrowley/go-metrics
   version: 8732c616f52954686704c8645fe1a9d59e9df7c1
 - name: github.com/Shopify/sarama
-  version: 598379494566842a64f60ccc237fef992b28d051
+  version: 5e8fd95863bd4a894fcd29225547d56967f189ad
 - name: github.com/sirupsen/logrus
-  version: c155da19408a8799da419ed3eeb0cb5db0ad5dbc
+  version: 90150a8ed11b6ce285e77e8af2b0109559ce4777
 - name: github.com/urfave/cli
   version: 8e01ec4cd3e2d84ab2fe90d8210528ffbb06d8ff
 - name: golang.org/x/crypto
-  version: c7dcf104e3a7a1417abc0230cb0d5240d764159d
+  version: 88942b9c40a4c9d203b82b3731787b672d6e809b
   subpackages:
   - ssh/terminal
 - name: golang.org/x/sys
-  version: 7dca6fe1f43775aa6d1334576870ff63f978f539
+  version: 91ee8cde435411ca3f1cd365e8f20131aed4d0a1
   subpackages:
   - unix
   - windows

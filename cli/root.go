@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"bufio"
 	"fmt"
 	"os"
 	"sync"
@@ -24,6 +25,10 @@ var (
 			Name:  "debug",
 			Usage: "add this flag to enable debug mode",
 		},
+		cli.BoolFlag{
+			Name:  "profile",
+			Usage: "write profile information for debugging",
+		},
 	}
 )
 
@@ -41,7 +46,7 @@ func RootAction(c *cli.Context) error {
 		log.Fatal("You should specify an endpoint address in a format <scheme>://<hostname>[:port][/path]")
 	}
 
-	q = websocket.New(
+	q = websocket.FromConfig(
 		websocket.Config{Addr: c.Args().Get(0)},
 		log,
 	)
@@ -69,13 +74,13 @@ func RootAction(c *cli.Context) error {
 
 		stream, err = cr.Consume()
 		if err != nil {
-			panic(err)
+			log.Fatal(err)
 		}
 
 		for r := range stream {
 			switch {
 			case r.Err != nil:
-				panic(r.Err)
+				log.Fatal(r.Err)
 			default:
 				log.Debugf("Consumed: %s", r.Value)
 				fmt.Printf("%s\n", r.Value)
@@ -88,26 +93,23 @@ func RootAction(c *cli.Context) error {
 		defer wg.Done()
 
 		var (
-			n   int
+			s   = bufio.NewScanner(os.Stdin)
 			m   message.Message
 			err error
 		)
 
-		for {
-			n, err = os.Stdin.Read(m)
-			if err != nil {
-				panic(err)
-			}
-
-			if n == 0 {
-				continue
-			}
-
+		for s.Scan() {
+			m = message.Message(s.Text())
 			log.Debugf("Producing: %s", m)
 			err = pr.Produce(m)
 			if err != nil {
-				panic(err)
+				log.Fatal(err)
 			}
+		}
+
+		err = s.Err()
+		if err != nil {
+			log.Fatal(err)
 		}
 	}()
 	wg.Add(1)
