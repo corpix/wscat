@@ -1,7 +1,7 @@
 with import <nixpkgs>{};
 { pkgs ? import <nixpkgs> {} }:
 
-buildGo19Package rec {
+buildGoPackage rec {
   name = "wscp-unstable-${version}";
   version = "development";
 
