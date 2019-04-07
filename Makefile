@@ -13,6 +13,12 @@ build_flags := -a -ldflags "$(ldflags)" -o build/$(name)
 .PHONY: all
 all: build
 
+.PHONY: build
+build:
+	mkdir -p $(build)
+	@echo "Build id: $(build_id)"
+	go build -o wscat $(build_flags) -v $(package)
+
 .PHONY: test
 test:
 	go test -v ./...
@@ -27,15 +33,6 @@ lint:
 
 .PHONY: check
 check: lint test
-
-.PHONY: $(name)
-$(name):
-	mkdir -p $(build)
-	@echo "Build id: $(build_id)"
-	go build $(build_flags) -v $(package)/$(name)
-
-.PHONY: build
-build: $(name)
 
 .PHONY: clean
 clean:
