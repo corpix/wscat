@@ -5,8 +5,7 @@ buildGoPackage rec {
   name = "wscat-${version}";
   version = "development";
 
-  buildInputs = with pkgs; [ git glide ];
-
   src = ./.;
+  goDeps = ./deps.nix;
   goPackagePath = "github.com/corpix/wscat";
 }
