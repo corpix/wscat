@@ -9,7 +9,7 @@ script: |
     [ -e "$gopath_location" ] || ln -s $(pwd) "$gopath_location"
     cd "$gopath_location"
 
-    nixpkgs_rev=03050e9749e
+    nixpkgs_rev=03050e9749e1548f1648aae5c062c954eaad546e
     curl -L https://github.com/NixOS/nixpkgs/archive/${nixpkgs_rev}.tar.gz | tar -xz -C $HOME
     export NIX_PATH=nixpkgs=$HOME/nixpkgs-${nixpkgs_rev}
 
