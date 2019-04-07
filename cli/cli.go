@@ -41,7 +41,7 @@ func Prerun(c *cli.Context) error {
 // This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
 	app := cli.NewApp()
-	app.Name = "wscp"
+	app.Name = "wscat"
 	app.Usage = "WebSocket Consumer & Producer"
 	app.Action = RootAction
 	app.Flags = RootFlags

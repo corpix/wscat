@@ -1,16 +1,16 @@
-wscp
+wscat
 ---------
 
-[![Build Status](https://travis-ci.org/corpix/wscp.svg?branch=master)](https://travis-ci.org/corpix/wscp)
+[![Build Status](https://travis-ci.org/corpix/wscat.svg?branch=master)](https://travis-ci.org/corpix/wscat)
 
 ## Usage
 
 ```console
-$ ./wscp -h
+$ ./wscat -h
 NAME:
-   wscp - WebSocket Consumer & Producer
+   wscat - WebSocket Consumer & Producer
 USAGE:
-   wscp [global options] command [command options] [arguments...]
+   wscat [global options] command [command options] [arguments...]
 VERSION:
    development
 COMMANDS:
@@ -20,7 +20,7 @@ GLOBAL OPTIONS:
    --help, -h     show help
    --version, -v  print the version
    
-$ ./wscp wss://cryptounicorns.io/api/v1/events/stream | head -n 5
+$ ./wscat wss://cryptounicorns.io/api/v1/events/stream | head -n 5
 {"type":"tickers","payload":{"buy":308.85,"high":318.99,"last":307.61,"low":275.51,"market":"bitfinex","sell":307.77,"symbolPair":"ZEC-USD","tags":["mole","* * * * * *"],"timestamp":1520815645173712100,"vol":11637.10892408}}
 {"type":"tickers","payload":{"buy":0.0015303,"high":0.0015553,"last":0.0015273,"low":0.0014944,"market":"bitfinex","sell":0.0015246,"symbolPair":"OMG-BTC","tags":["mole","* * * * * *"],"timestamp":1520815645301125400,"vol":72863.29011334}}
 {"type":"tickers","payload":{"buy":0.00063447,"high":0.00065544,"last":0.00063443,"low":0.00063443,"market":"bitfinex","sell":0.00063404,"symbolPair":"EOS-BTC","tags":["mole","* * * * * *"],"timestamp":1520815645308929300,"vol":274006.63606891}}

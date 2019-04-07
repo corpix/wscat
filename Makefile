@@ -1,9 +1,8 @@
 .DEFAULT_GOAL = all
 
-numcpus  := $(shell cat /proc/cpuinfo | grep '^processor\s*:' | wc -l)
 version  := $(shell git rev-list --count HEAD).$(shell git rev-parse --short HEAD)
 
-name     := wscp
+name     := wscat
 package  := github.com/corpix/$(name)
 
 build       := ./build
@@ -12,39 +11,32 @@ ldflags     := -X $(package)/cli.version=$(version) -B $(build_id)
 build_flags := -a -ldflags "$(ldflags)" -o build/$(name)
 
 .PHONY: all
-all:: dependencies
-
-.PHONY: dependencies
-dependencies::
-	glide install
+all: build
 
 .PHONY: test
-test:: dependencies
-	go test -v $(shell glide novendor)
+test:
+	go test -v ./...
 
 .PHONY: bench
-bench:: dependencies
-	go test -bench=. -v $(shell glide novendor)
+bench:
+	go test -bench=. -v ./...
 
 .PHONY: lint
-lint:: dependencies
-	go vet -v $(shell glide novendor)
+lint:
+	go vet -v ./...
 
 .PHONY: check
-check:: lint test
-
-.PHONY: all
-all:: $(name)
+check: lint test
 
 .PHONY: $(name)
-$(name):: dependencies
+$(name):
 	mkdir -p $(build)
 	@echo "Build id: $(build_id)"
 	go build $(build_flags) -v $(package)/$(name)
 
 .PHONY: build
-build:: $(name)
+build: $(name)
 
 .PHONY: clean
-clean::
+clean:
 	git clean -xddff
